@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de diabetes</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+/*cabeçalho*/
+    header {
+        background-color: rgb(212, 146, 146);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        display: flex; 
+        flex-direction: column; 
+        gap: 8px;
+    }
+
+   
+    .container-principal {
+        display: flex;
+        flex: 1; 
+    }
+
+    /* Menu Lateral */
+    nav {
+        width: 200px;
+        background-color: rgb(92, 26, 26);
+    }
+    nav ul {
+        list-style: none;
+    }
+    nav ul li {
+        margin: 15px;
+        text-align: right;
+    }
+    nav ul li a {
+        color: rgb(250, 250, 250);
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+    /* Efeito visual ao passar o mouse nos links do menu */
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Área da direita (Texto + Rodapé) */
+    .conteudo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: azure;
+       
+    }
+    main {
+        flex: 1;
+        padding: 30px;
+        max-width: 800px; /* Evita que o texto fique longo demais e canse a leitura */
+        margin: 0 auto;  /* Centraliza o bloco de texto na tela */
+    }
+    main p {
+        font-size: 1.2rem;
+        line-height: 1.6; /* Melhora o espaçamento entre as linhas do texto */
+        color: #333;
+    }
+
+    /* Rodapé */
+    footer {
+        background-color: rgb(212, 146, 146); /* Alinhado com a cor do menu */
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    header img {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+    
+     .tipos{
+        width:220px;
+    height:200px;
+    background-color:rgb(212, 146, 146);
+    border:2px solid rgb(92, 26, 26);
+    border-radius:10px;
+    padding:10px;
+    overflow:hidden;
+    transition:height 0.4s ease;
+    cursor:pointer;
+    transform: 0.3s ease;
+    box-shadow: 0.3s ease;
+}
+
+    .tipod{
+        display:flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+
+    }
+    .tipos:hover{
+    height:380px;
+    transform:translateY(-5px);
+    box-shadow:0 8px 16px rgba(0,0,0,0.2);
+}
+
+.descricao{
+    margin-top:10px;
+    opacity:0;
+    transition:opacity 0.3s ease;
+}
+
+.tipos:hover .descricao{
+    opacity:1;
+}
+.img {
+    width: 200px;
+    height: 180px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* Área dos botões de login */
+.area-login {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.login-btn,
+.login-btns {
+    width: 120px;
+    height: 35px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+
+    border: 1px solid white;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+.nomeUsuario {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Cabeçalho no Topo -->
+    <header>
+        <h1>Uso de softwares para o monitoramento de crianças com diabetes</h1>
+        <h4>Uma chance de melhorias na infância</h4>
+        <h5>Atualizado em 17/08/26</h5>
+        <div class="area-login">
+        <button id="botaoLogin" class="login-btn" onclick="window.location.href='login.html'">Entrar / Cadastrar</button>
+        <span class="nomeUsuario" id="nomeUsuario"></span>
+        <button id="botaoSair" class="login-btns" onclick="sair()">Sair</button>
+        </div>
+    </header>
+
+    <!-- 2. Bloco Central (Menu na esquerda, Conteúdo na direita) -->
+    <div class="container-principal">
+        <nav>
+            <ul>
+                <li><a class="começo" href="diabetes2.html">Visitar página</a></li>
+                <li><a class="começo" href="receitas.html">Receitas</a></li>
+                <li><a class="começo" href="perguntas.html">Quer Perguntar?</a></li>
+                <li><a class="começo" href="softwares.html">Tecnologias</a></li>
+                <li><a class="começo" href="glicemia.html">Analise de Glicemia</a></li>
+            </ul>
+        </nav>
+
+        <div class="conteudo">
+            <main>
+                <p>Diabetes é uma doença que ao longo dos anos está crescendo no Brasil, mas além da preocupação
+                    também podemos ver a doença com outros olhos. Na atualidade, existem inovações que cada vez mais 
+                    ajudam as pessoas a conviver com diabetes de forma positiva e saudável!
+                    Você está entrando nesse mundo agora, mãezinha, e não sabe se está preparada?
+                    Fique calma. 
+                    Esta plataforma foi criada com o intuito de ajudar mães e pais que descobriram
+                    a diabetes dos filhos e não sabem por qual caminho seguir. Esperamos que vocês 
+                    possam encontrar o auxílio que procuram.
+                </p>
+            <br>
+
+            <div class="tipod">
+            <div class="tipos">
+                <img class="img"  src="Diabetes.tipo1-atual.png" alt="Rótulo para diabetes tipo 1 ">
+                <h3>Diabetes tipo 1</h3>
+        <div class="descricao">
+        O diabetes tipo 1 ocorre quando o organismo para de produzir insulina.
+        </div>
+            </div>
+
+
+            <div class="tipos">
+            <img class="img"  src="Diabetes.tipo2-atual.png" alt="Rótulo para diabetes tipo 2">
+            <h3>Diabetes tipo 2</h3>
+            <div class="descricao">
+        O diabetes tipo 2 acontece quando o corpo não consegue usar a insulina que produz corretamente.
+        </div>
+            </div>
+
+
+            <div class="tipos">
+                <img class="img"  src="Diabetes.gest-atual (2).png" alt="Rótulo para diabetes gestacionis ">
+                <h3>Diabetes gestacional </h3>
+            <div class="descricao">
+        O diabetes gestacional aparece durante a gravidez, quando o corpo tem dificuldade para controlar a glicose.
+        </div>
+            </div>
+            </div>
+        <br> 
+        <p>Ao descobrir o diagnostico de diabetes, muitos questionamentos
+            surgem na cabeça. Essa questão se amplia quando essa situação
+            acontece com um filho, crianças ou adolescentes que tiveram suas rotinas transformadas.</p>
+        <p>
+            Queremos ajudar a esclarecer algumas dúvidas, para que os pais dessas
+            crianças sejam assistidos em relação as muitas perguntas que chegam
+            na cabeça nessa hora. Em caso de questionamentos maiores ou casos 
+            específicos, aconselha-se uma opinião médica.  
+        </p>
+        </main>
+
+            <!-- 3. Rodapé fixado na base do conteúdo -->
+            <footer>
+                <p>TCC - Monitoramento de Diabetes Infantil</p>
+            </footer>
+        </div>
+    </div>
+<script type="module" src="auth.js"></script>
+</body>
+
+
+</html>

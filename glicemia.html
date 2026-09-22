@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de diabetes</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+/*cabeçalho*/
+    header {
+        background-color: rgb(235, 193, 88);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column; 
+        gap: 8px;
+    }
+
+    .container-principal {
+        display: flex;
+        flex: 1; 
+    }
+
+    /* Menu Lateral */
+    nav {
+        width: 200px;
+        background-color: rgb(92, 26, 26);
+    }
+    nav ul {
+        list-style: none;
+    }
+    nav ul li {
+        margin: 15px;
+        text-align: right;
+    }
+    nav ul li a {
+        color: rgb(250, 250, 250);
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+    /* Efeito visual ao passar o mouse nos links do menu */
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Área da direita (Texto + Rodapé) */
+    .conteudo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: azure;
+        text-align: justify;
+    }
+    main {
+        flex: 1;
+        padding: 30px;
+        max-width: 800px; /* Evita que o texto fique longo demais e canse a leitura */
+        margin: 0 auto;  /* Centraliza o bloco de texto na tela */
+    }
+    main p {
+        font-size: 1.2rem;
+        line-height: 1.6; /* Melhora o espaçamento entre as linhas do texto */
+        color: #333;
+    }
+
+    /* Rodapé */
+    footer {
+        background-color: rgb(235, 193, 88); /* Alinhado com a cor do menu */
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    header img {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+      
+     .resultados{
+        color: rgb(0, 0, 0);
+        width: 500px;
+        height: 400px;
+        padding: 15px;
+        margin: 50px auto;
+        border: 1px  solid ;}
+
+    button{
+        background-color: rgb(240, 237, 206);
+        width: 100px;
+        height: 20px;
+        border: 1px solid ;
+    
+    }
+    .nome {
+    position: absolute;
+    right: 100px;
+    top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+.vazio1{
+    width: 450px;
+    height: 250px;
+    padding: 15px;
+    margin: 45px auto;}
+
+/* Área dos botões de login */
+.area-login {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.login-btn,
+.login-btns {
+    width: 120px;
+    height: 35px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+
+    border: 1px solid white;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+.nomeUsuario {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Cabeçalho no Topo -->
+    <header>
+        <h1>Análise de glicemia</h1>
+        <h4>Área para analisar a taxa glicêmica</h4>
+        <h5>Atualizado em 17/08/26</h5>
+         <div class="area-login">
+        <button id="botaoLogin" class="login-btn" onclick="window.location.href='login.html'">Entrar / Cadastrar</button>
+        <span class="nomeUsuario" id="nomeUsuario"></span>
+        <button id="botaoSair" class="login-btns" onclick="sair()">Sair</button>
+        </div>
+ </header>
+
+    <!-- 2. Bloco Central (Menu na esquerda, Conteúdo na direita) -->
+    <div class="container-principal">
+        <nav>
+            <ul>
+                <li><a class="começo" href="diabetes2.html">Visitar página</a></li>
+                <li><a class="começo" href="receitas.html">Receitas</a></li>
+                <li><a class="começo" href="perguntas.html">Quer Perguntar?</a></li>
+                <li><a class="começo" href="softwares.html">Tecnologias</a></li>
+                <li><a class="começo" href="glicemia.html">Analise de Glicemia</a></li>
+
+
+            </ul>
+        </nav>
+
+        <div class="conteudo">
+            <main>
+                <h1> Analisando a glicemia</h1> <br>
+                <p>Esta área foi reservada para analisar o nível da glicemia do portador de diabete. Adicione o dado necessário para que possamos avaliar.<br>
+                Lembrando que a medição deve ser realizada crespeitando o jejum de 8 - 12 horas.</p> <br> 
+                <h4>Atenção ao inserir o dado (apenas números)</h4> 
+                    <label for="glicemia">Digite a glicemia:</label>
+                    <input type="number" id="glicemia"><br>
+                    <button onclick="verificarGlicemia()">Verificar</button>
+                    <label for="dataMedicao">Data da medição:</label>
+                    <input type="date" id="dataMedicao">
+
+            <div class="resultados">
+            <h2 id="titulo">Orientações</h2>
+            <p class="vazio1" id="vazio1"> </p>
+            <button onclick="salvarGlicemia()">Salvar medição</button>  
+            <button onclick="gerarTabela()">Gerar tabela</button>
+            <div id="tabelaMedicoes"></div>
+            
+            
+            </div> <br><hr><br>
+            
+            <h2>Observações</h2>
+            <p>Estas medidas são um valor médio. Há varios fatores que infuenciam no resultado da glicemia como:</p> <br>
+            <ul>
+                <li>Tempo de jejum: O jejum padrão para crianças e adolescentes é de 8 a 12 horas</li>
+                <li>Atividade física: Pode reduzir temporariamente os níveis de glicose.</li>
+                <li>Medicamentos: Corticoides ealguns antiepilépticos podem aumentar a glicose; insulina e hipoglicemiantes orais reduzem.</li>
+                <li>Hidratação e estado nutricional: Desidratação e desnutrição podem alterar a homeostase da glicose.</li>
+            </ul> <br><br>
+            <p>Responsável, cada criança é única. Uma alteração na glicemia não significa que você fez algo errado.
+                 Mantenha a calma, siga o plano de cuidados indicado pela equipe de saúde e acompanhe os valores ao longo do dia.
+                  Nunca altere a dose de insulina por conta própria. Em caso de valores muito baixos ou muito altos, principalmente acompanhados de sintomas, 
+                  procure orientação médica.</p>
+            
+            </main>
+
+           
+            <footer>
+                <p>TCC - Monitoramento de Diabetes Infantil</p>
+            </footer>
+        </div>
+    </div>
+
+</body>
+
+<script  type="module">
+import { auth, db } from "./firebase.js";
+
+import {
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    orderBy
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+function verificarGlicemia() {
+    let glicemia = Number(document.getElementById("glicemia").value);
+    let resultado = document.getElementById("vazio1");
+
+    if (isNaN(glicemia) || glicemia <= 0) {
+        resultado.innerHTML = "Digite um valor correto para a glicemia.";}
+    else if (glicemia < 54) {
+        resultado.style.background = "rgb(180, 0, 0)"
+        resultado.style.color = "white"
+        resultado.innerHTML = "<h3>Glicemia muito baixa</h3>" +"<br> Atenção imediata. Siga o plano de tratamento da criança para hipoglicemia e não deixe a criança sozinha. Se estiver inconsciente, convulsionando ou sem conseguir engolir, procure atendimento de emergência.";}
+    else if (glicemia >= 54 && glicemia <= 69) {
+        resultado.style.background = "rgb(220, 30, 30)"
+        resultado.style.color = "white"
+        resultado.innerHTML = "<h3>Glicemia baixa.</h3>"+"<br>Corrija a hipoglicemia conforme a orientação da equipe de saúde e verifique novamente a glicemia depois do tempo recomendado pelo plano da criança. Observe sintomas como tremores, suor, fome, tontura ou confusão.";}
+    else if (glicemia >= 70 && glicemia <= 89) {
+        resultado.style.background = "rgb(255, 200, 0)"
+        resultado.style.color = "white"
+        resultado.innerHTML = "<h3>Glicemia levemente abaixo do esperado.</h3>"+"<br>Observe como a criança está se sentindo. Se estiver sem sintomas, acompanhe a glicemia e siga normalmente o plano indicado pelo médico. Se estiver próxima de uma refeição ou apresentar sintomas, siga a orientação individual recebida.";}
+    else if (glicemia >= 90 && glicemia <= 130) {
+        resultado.style.background = "rgb(130, 200, 70)"
+        resultado.style.color = "white"
+        resultado.innerHTML = "<h3>Glicemia dentro da faixa esperada.</h3>"+"<br>Continue o acompanhamento normalmente e mantenha a alimentação, medicamentos e rotina conforme a orientação da equipe de saúde.";}
+    else if (glicemia >= 131 && glicemia <= 180) {
+        resultado.style.background = "rgb(255, 190, 0)"
+        resultado.style.color = "white"
+        resultado.innerHTML = "<h3>Glicemia levemente acima do esperado.</h3>"+"<br>Se a medição foi feita após a refeição, pode estar dentro da faixa esperada. Continue acompanhando e observe a tendência das próximas medições.";}
+    else if (glicemia >= 181 && glicemia <= 250) {
+        resultado.style.background = "rgb(240, 90, 20)"
+        resultado.style.color = "white"
+        resultado.innerHTML = "<h3>Glicemia acima do esperado.</h3>"+"<br>Verifique se a medição foi feita após uma refeição e siga o plano de correção prescrito para a criança. Não aplique uma dose extra de insulina por conta própria.";}
+    else if (glicemia >= 251 && glicemia <= 300) {
+        resultado.style.background = "rgb(220, 30, 30)"
+        resultado.style.color = "white"
+        resultado.innerHTML = "<h3>Glicemia muito acima do esperado.</h3>"+"<br>Atenção. Siga o plano de tratamento indicado pela equipe de saúde e verifique cetonas se isso fizer parte das orientações recebidas. Se continuar elevada, entre em contato com a equipe de saúde.";}
+    else if (glicemia > 300) {
+        resultado.style.background = "rgb(180, 0, 0)"
+        resultado.style.color = "white"
+        resultado.innerHTML = "<h3>Glicemia extremamente alta.</h3>"+"<br>Procure orientação médica rapidamente, principalmente se a glicemia permanecer alta. Se houver vômitos, dor abdominal, respiração rápida ou difícil, sonolência, confusão ou alteração do estado de consciência, procure atendimento de emergência.";}
+}
+
+async function salvarGlicemia() {
+
+    const glicemia = Number(document.getElementById("glicemia").value);
+    const data = document.getElementById("dataMedicao").value;
+
+    // Verifica se os campos foram preenchidos
+    if (!glicemia || !data) {
+        alert("Preencha a glicemia e a data da medição.");
+        return;
+    }
+    // Verifica se existe usuário logado
+    const user = auth.currentUser;
+    if (!user) {
+        alert("Você precisa fazer login para salvar uma medição.");
+        window.location.href = "login.html";
+        return;
+    }
+    try {
+        await addDoc(
+            collection(db, "usuarios", user.uid, "medicoes"),
+            {
+                glicemia: glicemia,
+                data: data,
+                criadoEm: new Date()
+            }
+        );
+
+        alert("Medição salva com sucesso! 💙");
+    } catch (erro) {
+        console.error("Erro ao salvar:", erro);
+        alert("Não foi possível salvar a medição.");
+    }
+}
+async function gerarTabela() {
+
+    const user = auth.currentUser;
+
+    if (!user) {
+        alert("Você precisa fazer login para visualizar suas medições.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    try {
+
+        const consulta = query(
+            collection(db, "usuarios", user.uid, "medicoes"),
+            orderBy("data", "desc")
+        );
+
+        const resultado = await getDocs(consulta);
+
+        let tabela = `
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Data da medição</th>
+                        <th>Glicemia</th>
+                        <th>Nível</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        resultado.forEach((documento) => {
+
+            const medicao = documento.data();
+
+            const nivel = verificarNivel(medicao.glicemia);
+
+            tabela += `
+                <tr>
+                    <td>${medicao.data}</td>
+                    <td>${medicao.glicemia} mg/dL</td>
+                    <td>${nivel}</td>
+                </tr>
+            `;
+        });
+
+        tabela += `
+                </tbody>
+            </table>
+        `;
+
+        document.getElementById("tabelaMedicoes").innerHTML = tabela;
+
+    } catch (erro) {
+
+        console.error("Erro ao gerar tabela:", erro);
+
+        alert("Não foi possível carregar suas medições.");
+    }
+}
+function verificarNivel(valor) {
+    
+    if (valor < 54) {
+        return "Glicemia muito baixa";
+    }
+
+    else if (valor >= 54 && valor <= 69) {
+        return "Glicemia baixa";
+    }
+
+    else if (valor >= 70 && valor <= 89) {
+        return "Levemente abaixo do esperado";
+    }
+
+    else if (valor >= 90 && valor <= 130) {
+        return "Dentro da faixa esperada";
+    }
+
+    else if (valor >= 131 && valor <= 180) {
+        return "Levemente acima do esperado";
+    }
+
+    else if (valor >= 181 && valor <= 250) {
+        return "Acima do esperado";
+    }
+
+    else if (valor >= 251 && valor <= 300) {
+        return "Muito acima do esperado";
+    }
+
+    else {
+        return "Extremamente alta";
+    }
+}
+
+window.verificarGlicemia = verificarGlicemia;
+window.salvarGlicemia = salvarGlicemia;
+window.gerarTabela = gerarTabela;
+</script>
+<script type="module" src="auth.js"></script>
+</html>

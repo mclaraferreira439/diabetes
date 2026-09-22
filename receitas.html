@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de diabetes</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+/*cabeçalho*/
+    header {
+        background-color: rgb(207, 113, 11);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        display: table-column;
+        flex-direction: column; 
+        gap: 8px;
+    }
+
+   
+    .container-principal {
+        display: flex;
+        flex: 1; 
+    }
+
+    /* Menu Lateral */
+    nav {
+        width: 200px;
+        background-color: rgb(92, 26, 26);
+    }
+    nav ul {
+        list-style: none;
+    }
+    nav ul li {
+        margin: 15px;
+        text-align: right;
+    }
+    nav ul li a {
+        color: rgb(250, 250, 250);
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+    /* Efeito visual ao passar o mouse nos links do menu */
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Área da direita (Texto + Rodapé) */
+    .conteudo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: azure;
+    }
+    main {
+        flex: 1;
+        padding: 30px;
+        max-width: 800px; /* Evita que o texto fique longo demais e canse a leitura */
+        margin: 0 auto;  /* Centraliza o bloco de texto na tela */
+    }
+    main p {
+        font-size: 1.2rem;
+        line-height: 1.6; /* Melhora o espaçamento entre as linhas do texto */
+        color: #333;
+    }
+
+    /* Rodapé */
+    footer {
+        background-color: rgb(229, 143, 30); /* Alinhado com a cor do menu */
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    header img {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+      
+    .rec{
+        border: 1px solid black;
+        padding: 20px;
+        text-align: justify;
+        background-color: aliceblue;
+        border-radius: 10px;
+
+    }
+    table,td,th{
+        text-align: center;
+        border: 1px solid black;
+        margin: 5px;
+        padding: 5px;
+
+
+    }
+    .nome {
+    position: absolute;
+    right: 100px;
+    top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+/* Área dos botões de login */
+.area-login {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.login-btn,
+.login-btns {
+    width: 120px;
+    height: 35px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+
+    border: 1px solid white;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+.nomeUsuario {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Cabeçalho no Topo -->
+    <header>
+        <h1>Receitas para diabeticos</h1>
+        <h4>Que tal conhecer comidinhas gostosas para o dia a dia? Vamos lá</h4>
+        <h5>Atualizado em 17/08/26</h5>
+        <div class="area-login">
+        <button id="botaoLogin" class="login-btn" onclick="window.location.href='login.html'">Entrar / Cadastrar</button>
+        <span class="nomeUsuario" id="nomeUsuario"></span>
+        <button id="botaoSair" class="login-btns" onclick="sair()">Sair</button>
+        </div>
+    </header>
+
+    <!-- 2. Bloco Central (Menu na esquerda, Conteúdo na direita) -->
+    <div class="container-principal">
+        <nav>
+            <ul>
+                <li><a class="começo" href="diabetes2.html">Visitar página</a></li>
+                <li><a class="começo" href="receitas.html">Receitas</a></li>
+                <li><a class="começo" href="perguntas.html">Quer Perguntar?</a></li>
+                <li><a class="começo" href="softwares.html">Tecnologias</a></li>
+                <li><a class="começo" href="glicemia.html">Analise de Glicemia</a></li>
+            </ul>
+        </nav>
+
+        <div class="conteudo">
+            <main>
+                <h1 style="text-align: center;">Receitas</h1><br>
+                <p>Aqui você encontrará receitas simples e saborosas para ajudar a manter uma alimentação mais equilibrada. </p>
+                <br><br>
+                <div class="rec">
+                <h2>Picolé de banana - Rendimento: 6 porções </h2> <br>
+                <h3>Ingredientes</h3><br>
+                <ul>
+                <li>500 ml de leite desnatado</li>
+                <li>1 colher (sobremesa) de amido de milho</li>
+                <li>1 colher (sopa) de adoçante dietético em pó, próprio para forno e fogão</li>
+                <li>3 bananas-nanicas maduras</li>
+                <li>Granulado dietético sabor chocolate</li>
+                </ul><br>
+                <h3>Preparo</h3><br>
+                <p>Misture o leite, o amido e o adoçante e leve ao fogo até obter um mingau. 
+                Espere esfriar e bata no liquidificador com as bananas. Coloque a mistura em forminhas para picolé (ou de gelo) 
+                e leve ao freezer. Na hora de servir, salpique o granulado.</p>
+                </div><br>
+                <h2>Informações Nutricionais - Picolé de banana</h2>
+
+                <table>
+                <tr>
+                <th>1 Porção</th>
+                <th>40 g</th>
+                </tr>
+                <td>Proteínas</td>
+                <td>3,6 g</td>
+                </tr>
+                <tr>
+                <td>Carboidratos</td>
+                <td>17,3 g</td>
+                </tr>
+                <tr>
+                <td>Colesterol</td>
+                <td>2 mg</td>
+                </tr>
+                </table><br>
+
+                <div class="rec">
+                <h2>Gelatina colorida - Rendimento: 10 porções </h2> <br>
+                <h3>Ingredientes</h3><br>
+                <ul>
+                <li>3 envelopes de gelatina em pó dietética (sabores de sua preferência)</li>
+                <li>1 envelope de gelatina em pó incolor e sem sabor</li>
+                <li>1 xícara (chá) de água</li>
+                <li>1/2 xícara (chá) de creme de leite light</li>
+                <li>1 pote de iogurte natural desnatado</li>
+                <li>1 lata de pêssegos em calda dietéticos</li>
+                </ul><br>
+                <h3>Preparo</h3><br>
+                <p>Prepare as gelatinas conforme a embalagem, mas considere 1 xícara de água para cada sabor.
+                     Depois que estiverem firmes, corte em quadradinhos. Dissolva a gelatina sem sabor na água e aqueça em banho-maria.
+                      Bata com o creme de leite, o iogurte e a calda do pêssego no liquidificador. Coloque as gelatinas e os pêssegos
+                       picados em um refratário e cubra com o creme. Leve para gelar.</p>
+                </div> <br>
+                <h2>Informações Nutricionais - Gelatina colorida </h2>
+
+                <table>
+                <tr>
+                <th>1 Porção</th>
+                <th>70 g</th>
+                </tr>
+                <tr>
+                <td>Proteínas</td>
+                <td>8,9 g</td>
+                </tr>
+                <tr>
+                <td>Carboidratos</td>
+                <td>4,1 g</td>
+                </tr>
+                <tr>
+                <td>Colesterol</td>
+                <td>7 mg</td>
+                </tr>
+                </table><br>
+
+                <div class="rec">
+                <h2>Refresco de melancia - Rendimento: 4 porções</h2> <br>
+                <h3>Ingredientes</h3><br>
+                <ul>
+                <li>4 xícaras (chá) de melancia sem sementes cortada em cubos</li>
+                <li>2 copos de iogurte desnatado</li>
+                <li>1 xícara (chá) de água</li>
+                <li>2 colheres (chá) de gengibre ralado</li>
+                <li>Folhas de hortelã para decorar (opcional)</li>
+                </ul><br>
+                <h3>Preparo</h3><br>
+                <p>Bata os ingredientes no liquidificador. Distribua o suco em copos, decore com a hortelã e sirva gelado.</p>
+                </div> <br>
+                <h2>Informações Nutricionais - Refresco de melancia</h2>
+
+                <table>
+                <tr>
+                <th>1 Porção</th>
+                <th>240 g</th>
+                </tr>
+                <tr>
+                <td>Proteínas</td>
+                <td>5,3 g</td>
+                </tr>
+                <tr>
+                <td>Carboidratos</td>
+                <td>14,6 g</td>
+                </tr>
+                <tr>
+                <td>Colesterol</td>
+                <td>88 mg</td>
+                </tr>
+                </table><br>
+
+                <div class="rec">
+                <h2>Estrogonofe de frango com berinjela - Rendimento: 7 porções </h2> <br>
+                <h3>Ingredientes</h3><br>
+                <ul>
+                <li>300 g de filé de frango cortado em tiras</li>
+                <li>1 colher (sopa) de sal</li>
+                <li>1 pitada de pimenta-do-reino branca</li>
+                <li>1 colher (chá) de azeite de oliva</li>
+                <li>1 cebola picada</li>
+                <li>1 berinjela média cortada em cubos</li>
+                <li>3 tomates sem pele e sem sementes picados</li>
+                <li>1 colher (sopa) de mostarda</li>
+                <li>2 colheres (sopa) de catchup light</li>
+                <li>1 colher (chá) de molho inglês</li>
+                <li>1 caixinha de creme de leite light (200 g)</li>
+                <li>Salsa picada a gosto</li>
+                </ul><br>
+                <h3>Preparo</h3><br>
+                <p>Tempere o frango com o sal e a pimenta. Aqueça o azeite e doure o frango. Junte a cebola e a berinjela e refogue para amaciar.
+                     Misture o restante dos ingredientes, com exceção do creme de leite e da salsa, e deixe por cerca de 5 minutos. 
+                     Retire, acrescente o creme de leite e a salsa e sirva na hora.</p>
+                </div><br>
+                <h2>Informações Nutricionais - Estrogonofe de frango com berinjela</h2>
+
+                <table>
+                <tr>
+                <th>1 Porção</th>
+                <th>120 g</th>
+                </tr>
+                <tr>
+                <td>Proteínas</td>
+                <td>11,6 g</td>
+                </tr>
+                <tr>
+                <td>Carboidratos</td>
+                <td>5,4 g</td>
+                </tr>
+                <tr>
+                <td>Colesterol</td>
+                <td>38 mg</td>
+                </tr>
+                </table><br><br>
+
+                <p style="text-align: justify;">⚠️ Atenção ao preparo!<br>
+
+                Antes de preparar qualquer receita, leia atentamente todos os ingredientes e o modo de preparo. 
+                Tenha cuidado durante o uso de utensílios, fogo, forno e outros equipamentos, seguindo sempre as orientações de segurança.<br>
+
+                As receitas apresentadas nesta página foram encontradas e adaptadas a partir do site oficial da Sociedade Brasileira de Diabetes, utilizado como 
+                fonte de referência. Recomendamos consultar a fonte original para conferir informações, medidas e orientações completas.</p><br>
+                <a href="https://diabetes.org.br/nutricao/"> Página de Receitas da SBD</a>
+
+
+
+            </main>
+
+           
+            <footer>
+                <p>TCC - Monitoramento de Diabetes Infantil</p>
+            </footer>
+        </div>
+    </div>
+
+</body>
+<script type="module" src="auth.js"></script>
+</html>

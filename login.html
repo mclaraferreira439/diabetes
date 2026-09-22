@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+
+        body {
+            background-color: rgb(245, 188, 211);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .formulario {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+
+        .formulario h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+
+        .formulario label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+
+        .formulario input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #999;
+            border-radius: 5px;
+        }
+
+
+        .formulario button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        #botaoCadastro {
+            background-color: rgb(92, 26, 26);
+            color: white;
+        }
+
+
+        #botaoNavegar {
+            background-color: rgb(235, 193, 88);
+            color: black;
+        }
+
+
+        .formulario p {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="formulario">
+
+        <h1>Login</h1>
+
+
+        <form id="formLogin">
+
+
+            <label for="email">
+                E-mail
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Digite seu e-mail"
+                required
+            >
+
+
+            <label for="senha">
+                Senha
+            </label>
+
+            <input
+                type="password"
+                id="senha"
+                placeholder="Digite sua senha"
+                required
+            >
+
+
+            <button type="submit">
+                Entrar
+            </button>
+
+
+        </form>
+
+
+        <p>
+            Ainda não possui uma conta?
+        </p>
+
+
+        <button
+            type="button"
+            id="botaoCadastro"
+            onclick="window.location.href='cadastro.html'">
+
+            Criar cadastro
+
+        </button>
+
+
+        <p>
+            Quer apenas conhecer o site?
+        </p>
+
+
+        <button
+            type="button"
+            id="botaoNavegar"
+            onclick="window.location.href='diabetes2.html'">
+
+            Navegar
+
+        </button>
+
+
+    </div>
+
+
+    <!-- JavaScript do login -->
+    <script
+        type="module"
+        src="login.js">
+    </script>
+
+
+</body>
+
+</html>

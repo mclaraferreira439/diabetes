@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de diabetes</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+/*cabeçalho*/
+    header {
+        background-color: rgb(207, 113, 11);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column; 
+        gap: 8px;
+    }
+
+   
+    .container-principal {
+        display: flex;
+        flex: 1; 
+    }
+
+    /* Menu Lateral */
+    nav {
+        width: 200px;
+        background-color: rgb(92, 26, 26);
+    }
+    nav ul {
+        list-style: none;
+    }
+    nav ul li {
+        margin: 15px;
+        text-align: right;
+    }
+    nav ul li a {
+        color: rgb(250, 250, 250);
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+    /* Efeito visual ao passar o mouse nos links do menu */
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Área da direita (Texto + Rodapé) */
+    .conteudo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: azure;
+         text-align: justify;
+    }
+    main {
+        flex: 1;
+        padding: 30px;
+        max-width: 800px; /* Evita que o texto fique longo demais e canse a leitura */
+        margin: 0 auto;  /* Centraliza o bloco de texto na tela */
+    }
+    main p {
+        font-size: 1.2rem;
+        line-height: 1.6; /* Melhora o espaçamento entre as linhas do texto */
+        color: #333;
+    }
+
+    /* Rodapé */
+    footer {
+        background-color: rgb(229, 143, 30); /* Alinhado com a cor do menu */
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    header img {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+     
+     /* parte para os card*/
+     .cards{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    margin-top:30px;
+}
+
+.flashcard{
+    width:860px;
+    height:170px;
+    perspective:1000px;
+    cursor:pointer;
+}
+
+.conteudo-card{
+    width:100%;
+    height:100%;
+    position:relative;
+    transition:transform .6s;
+    transform-style:preserve-3d;
+}
+
+.flashcard.virado .conteudo-card{
+    transform:rotateY(180deg);
+}
+
+.frente,
+.verso{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    text-align:center;
+    backface-visibility:hidden;
+    font-size:18px;
+    border:2px solid rgb(92,26,26);
+}
+
+.frente{
+    background:rgb(242, 176, 91);
+    color:white;
+}
+
+.verso{
+    background:azure;
+    color:#333;
+    transform:rotateY(180deg);
+}
+.nome {
+    position: absolute;
+    right: 100px;
+    top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+.nomeUsuario {
+    position: absolute;
+    top: 50px;
+    right: 70px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Área dos botões de login */
+.area-login {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.login-btn,
+.login-btns {
+    width: 120px;
+    height: 35px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+
+    border: 1px solid white;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+.nomeUsuario {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Cabeçalho no Topo -->
+    <header>
+        <h1>Quer Perguntar?</h1>
+        <h4>Tentaremos te ajudar a esclarecer algumas perguntas mais recorrentes</h4>
+        <h5>Atualizado em 17/08/26</h5>
+        <div class="area-login">
+        <button id="botaoLogin" class="login-btn" onclick="window.location.href='login.html'">Entrar / Cadastrar</button>
+        <span class="nomeUsuario" id="nomeUsuario"></span>
+        <button id="botaoSair" class="login-btns" onclick="sair()">Sair</button>
+        </div>
+    </header>
+
+    <!-- 2. Bloco Central (Menu na esquerda, Conteúdo na direita) -->
+    <div class="container-principal">
+        <nav>
+            <ul>
+                <li><a class="começo" href="diabetes2.html">Visitar página</a></li>
+                <li><a class="começo" href="receitas.html">Receitas</a></li>
+                <li><a class="começo" href="perguntas.html">Quer Perguntar?</a></li>
+                <li><a class="começo" href="softwares.html">Tecnologias</a></li>
+                <li><a class="começo" href="glicemia.html">Analise de Glicemia</a></li>
+            </ul>
+        </nav>
+
+        <div class="conteudo">
+            <main>
+                <p>Ao descobrir o diagnóstico de diabetes, muitos questionamentos
+                    surgem na cabeça. Essa questão se amplia quando essa situação
+                    acontece com um filho, crianças ou adolescentes que teram situações
+                    de vida mudadas.
+                </p>
+                <p>
+                    Queremos ajudar a esclarecer algumas dúvidas, para que os pais dessas
+                    crianças sejam assistidos em relação as muitas perguntas que chegam
+                    na cabeça nessa hora. Em caso de questionamentos maiores ou casos 
+                    específicos aconselha-se uma opinião médica.  
+                </p>
+                <div class="cards">
+
+                    <div class="flashcard" onclick="virar(this)">
+                        <div class="conteudo-card">
+
+                            <div class="frente">
+                                O que é diabetes tipo 1?
+                            </div>
+
+                            <div class="verso">
+                                É uma doença em que o organismo deixa de produzir insulina, sendo necessário o uso diário desse hormônio.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flashcard" onclick="virar(this)">
+                        <div class="conteudo-card">
+
+                            <div class="frente">
+                                Meu filho não pode mais comer doce?
+                            </div>
+
+                            <div class="verso">
+                                Dependendo da condição do seu filho, ele pode sim comer doces.
+                                O médico explica a quantidade certa de carboidratos que ele precisará ingerir
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flashcard" onclick="virar(this)">
+                        <div class="conteudo-card">
+
+                            <div class="frente">
+                                Posso receber insulinas de graça?
+                            </div>
+
+                            <div class="verso">
+                                Sim, com a documentação correta você tem direto de receber insulina no SUS
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </main>
+
+           
+            <footer>
+                <p>TCC - Monitoramento de Diabetes Infantil</p>
+            </footer>
+        </div>
+    </div>
+
+</body>
+
+<script type="module" src="auth.js"></script>
+
+
+</html>

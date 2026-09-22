@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de diabetes</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+/*cabeçalho*/
+    header {
+        background-color: rgb(235, 193, 88);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column; 
+        gap: 8px;
+    }
+
+   
+    .container-principal {
+        display: flex;
+        flex: 1; 
+    }
+
+    /* Menu Lateral */
+    nav {
+        width: 200px;
+        background-color: rgb(92, 26, 26);
+    }
+    nav ul {
+        list-style: none;
+    }
+    nav ul li {
+        margin: 15px;
+        text-align: right;
+    }
+    nav ul li a {
+        color: rgb(250, 250, 250);
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+    /* Efeito visual ao passar o mouse nos links do menu */
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Área da direita (Texto + Rodapé) */
+    .conteudo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: azure;
+    }
+    main {
+        flex: 1;
+        padding: 30px;
+        max-width: 800px; /* Evita que o texto fique longo demais e canse a leitura */
+        margin: 0 auto;  /* Centraliza o bloco de texto na tela */
+    }
+    main p {
+        font-size: 1.2rem;
+        line-height: 1.6; /* Melhora o espaçamento entre as linhas do texto */
+        color: #333;
+    }
+
+    /* Rodapé */
+    footer {
+        background-color: rgb(235, 193, 88); /* Alinhado com a cor do menu */
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    header img {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+     
+
+    .aplicativos{
+        width: 850px;
+        height: 380px;
+        background-color: bisque;
+        border: solid  rgb(228, 197, 163) 1px;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 5px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    .nome {
+    position: absolute;
+    right: 100px;
+    top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+
+/* Área dos botões de login */
+.area-login {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.login-btn,
+.login-btns {
+    width: 120px;
+    height: 35px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+
+    border: 1px solid white;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+.nomeUsuario {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Cabeçalho no Topo -->
+    <header>
+        <h1>Equipamentos</h1>
+        <h4>Equipamentos estudados</h4>
+        <h5>Atualizado em 17/08/26</h5>
+        <div class="area-login">
+        <button id="botaoLogin" class="login-btn" onclick="window.location.href='login.html'">Entrar / Cadastrar</button>
+        <span class="nomeUsuario" id="nomeUsuario"></span>
+        <button id="botaoSair" class="login-btns" onclick="sair()">Sair</button>
+        </div>
+    </header>
+
+    <!-- 2. Bloco Central (Menu na esquerda, Conteúdo na direita) -->
+    <div class="container-principal">
+        <nav>
+            <ul>
+                <li><a class="começo" href="diabetes2.html">Visitar página</a></li>
+                <li><a class="começo" href="receitas.html">Receitas</a></li>
+                <li><a class="começo" href="perguntas.html">Quer Perguntar?</a></li>
+                <li><a class="começo" href="softwares.html">Tecnologias</a></li>
+                <li><a class="começo" href="glicemia.html">Analise de Glicemia</a></li>
+
+
+            </ul>
+        </nav>
+
+        <div class="conteudo">
+            <main>
+            <div class="aplicativos">
+                <h3>Tecnologias Wearable</h3>
+                <p>
+                    As tecnologias wearable (tecnologias vestíveis) são uma opção de 
+                    ajuda possível para evitar as furadas constantes referentes a 
+                    medição de glicemia.
+                    Essas ferramentas semelhantes os relógios de pulso para caminhadas,
+                    elas são anexadas ao corpo e medem impulsos específicos do corpo. Um 
+                    exemplo são os sensores FreeStyle, eles têm uma agulha acoplada em um 
+                    sensor, uma vez aplicado no corpo do paciente o sensor consegue acompanhar 
+                    a média de glicemia e passar as informações para um aplicativo no celular.
+                </p>
+                <p>
+                    Boa opção para evitar furadas frequentes, pois mesmo sendo acoplado
+                    com uma agulha ele pode passar dias com o paciente, sem precisar 
+                    ser retirado, porém, esse metodo nem sempre é acessível devido ao seu 
+                    valor de venda.
+                </p>
+            </div>
+            <div class="aplicativos">
+                <h3>mySugr</h3>
+                <p>O mySugr funciona como um diário digital para registrar informações importantes
+                     sobre a diabetes, como glicemia, alimentação, atividade física e insulina. 
+                     Ele organiza esses dados em gráficos e relatórios, facilitando a compreensão 
+                     da rotina. Para crianças, pode ajudar a desenvolver autonomia e organização, 
+                     enquanto familiares e profissionais de saúde podem acompanhar as informações 
+                     e oferecer apoio.
+                     </p>
+            </div>
+            <div class="aplicativos">
+            <h3>Gluroo</h3>
+            <p>O Gluroo permite reunir e compartilhar informações sobre glicose, alimentação, insulina e atividades
+            físicas. Um de seus diferenciais é possibilitar que pais e cuidadores acompanhem os dados da criança em 
+            tempo real, ajudando a oferecer suporte mesmo quando não estão juntos. Isso pode trazer mais segurança 
+            para a família e ao mesmo tempo permitir que a criança desenvolva sua independência
+            </p>
+            </div>
+            <div class="aplicativos">
+                <h3>Glooko</h3>
+                <p>O Glooko reúne dados de diferentes dispositivos e aplicativos relacionados à diabetes,
+                     permitindo acompanhar glicose, insulina, alimentação, exercícios e medicamentos em um
+                      só lugar. Os gráficos e relatórios ajudam a identificar padrões e compreender melhor 
+                      a rotina da criança. Além disso, os dados podem ser compartilhados com a equipe de 
+                      saúde, facilitando o acompanhamento.</p>
+            </div>
+             <div class="aplicativos">
+                <h3>FreeStyle LibreLink</h3>
+                <p>O FreeStyle LibreLink trabalha em conjunto com os sensores FreeStyle Libre e permite 
+                    visualizar os níveis de glicose pelo celular. O aplicativo mostra a glicose, tendências
+                     e histórico, além de permitir registrar informações como alimentação, insulina e 
+                     exercícios. Para crianças, pode facilitar o acompanhamento da glicose e diminuir a 
+                     necessidade de medições rotineiras por picadas no dedo, dependendo do sistema utilizado.
+                      Os dados também podem ser compartilhados com familiares, cuidadores e profissionais 
+                      de saúde</p>
+             </div>
+
+            </main>
+
+           
+            <footer>
+                <p>TCC - Monitoramento de Diabetes Infantil</p>
+            </footer>
+        </div>
+    </div>
+
+</body>
+<script type="module" src="auth.js"></script>
+</html>
