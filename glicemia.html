@@ -638,109 +638,143 @@
         }
 
         async function gerarTabela() {
-            const user = auth.currentUser;
+    const user = auth.currentUser;
 
-            if (!user) {
-                alert("Você precisa fazer login para visualizar suas medições.");
-                window.location.href = "login.html";
-                return;
-            }
+    if (!user) {
+        alert("Você precisa fazer login para visualizar suas medições.");
+        window.location.href = "login.html";
+        return;
+    }
 
-            try {
-                const consulta = query(
-                    collection(db, "usuarios", user.uid, "medicoes"),
-                    orderBy("data", "desc")
-                );
+    try {
+        const consulta = query(
+            collection(db, "usuarios", user.uid, "medicoes"),
+            orderBy("data", "desc")
+        );
 
-                const resultado = await getDocs(consulta);
-                const areaTabela = document.getElementById("areaTabela");
+        const resultado = await getDocs(consulta);
 
-                if (resultado.empty) {
-                    document.getElementById("tabelaMedicoes").innerHTML =
-                        '<p>Você ainda não possui medições salvas.</p>';
-                    areaTabela.hidden = false;
-                    return;
-                }
+        const areaTabela = document.getElementById("areaTabela");
+        const tabelaMedicoes = document.getElementById("tabelaMedicoes");
 
-                let tabela = `
-                    <div class="tabela-scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Data da medição</th>
-                                    <th>Glicemia</th>
-                                    <th>Nível</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                `;
+        if (resultado.empty) {
+            tabelaMedicoes.innerHTML =
+                "<p>Você ainda não possui medições salvas.</p>";
 
-                resultado.forEach((documento) => {
-                    const medicao = documento.data();
-                    const nivel = verificarNivel(medicao.glicemia);
-                    const dataFormatada = medicao.data
-                        ? medicao.data.split("-").reverse().join("/")
-                        : "Data não informada";
+            areaTabela.hidden = false;
+            return;
+        }
 
-                    tabela += `
+        let tabela = `
+            <div class="tabela-scroll">
+                <table>
+                    <thead>
                         <tr>
-                            <td>${dataFormatada}</td>
-                            <td>${medicao.glicemia} mg/dL</td>
-                            <td><span class="status ${nivel.classe}">${nivel.texto}</span></td>
+                            <th>Data da medição</th>
+                            <th>Glicemia</th>
+                            <th>Nível</th>
                         </tr>
-                    `;
-                });
+                    </thead>
+                    <tbody>
+        `;
 
-                tabela += `
-                            </tbody>
-                        </table>
-                    </div>
-                `;
+        resultado.forEach((documento) => {
+            const medicao = documento.data();
 
-        document.getElementById("tabelaMedicoes").innerHTML = tabela;
+            const nivel = verificarNivel(Number(medicao.glicemia));
+
+            const dataFormatada = medicao.data
+                ? medicao.data.split("-").reverse().join("/")
+                : "Data não informada";
+
+            tabela += `
+                <tr>
+                    <td>${dataFormatada}</td>
+                    <td>${medicao.glicemia} mg/dL</td>
+                    <td>
+                        <span class="status ${nivel.classe}">
+                            ${nivel.texto}
+                        </span>
+                    </td>
+                </tr>
+            `;
+        });
+
+        tabela += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+
+        tabelaMedicoes.innerHTML = tabela;
+
+        // Torna a tabela visível após carregar os dados
+        areaTabela.hidden = false;
 
     } catch (erro) {
-
         console.error("Erro ao gerar tabela:", erro);
 
         alert("Não foi possível carregar suas medições.");
     }
 }
 function verificarNivel(valor) {
-    
+
     if (valor < 54) {
-        return "Glicemia muito baixa";
+        return {
+            texto: "Glicemia muito baixa",
+            classe: "muito-baixa"
+        };
     }
 
-    else if (valor >= 54 && valor <= 69) {
-        return "Glicemia baixa";
+    else if (valor <= 69) {
+        return {
+            texto: "Glicemia baixa",
+            classe: "baixa"
+        };
     }
 
-    else if (valor >= 70 && valor <= 89) {
-        return "Levemente abaixo do esperado";
+    else if (valor <= 89) {
+        return {
+            texto: "Levemente abaixo do esperado",
+            classe: "abaixo"
+        };
     }
 
-    else if (valor >= 90 && valor <= 130) {
-        return "Dentro da faixa esperada";
+    else if (valor <= 130) {
+        return {
+            texto: "Dentro da faixa esperada",
+            classe: "normal"
+        };
     }
 
-    else if (valor >= 131 && valor <= 180) {
-        return "Levemente acima do esperado";
+    else if (valor <= 180) {
+        return {
+            texto: "Levemente acima do esperado",
+            classe: "levemente-alta"
+        };
     }
 
-    else if (valor >= 181 && valor <= 250) {
-        return "Acima do esperado";
+    else if (valor <= 250) {
+        return {
+            texto: "Acima do esperado",
+            classe: "alta"
+        };
     }
 
-    else if (valor >= 251 && valor <= 300) {
-        return "Muito acima do esperado";
+    else if (valor <= 300) {
+        return {
+            texto: "Muito acima do esperado",
+            classe: "muito-alta"
+        };
     }
 
     else {
-        return "Extremamente alta";
+        return {
+            texto: "Extremamente alta",
+            classe: "extremamente-alta"
+        };
     }
 }
-
         window.verificarGlicemia = verificarGlicemia;
         window.salvarGlicemia = salvarGlicemia;
         window.gerarTabela = gerarTabela;
