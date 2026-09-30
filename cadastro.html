@@ -1,65 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-
-
     <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Times New Roman', Times, serif;
-        }
-
-
+            font-family: 'Times New Roman', Times, serif;}
         body {
             background-color: rgb(245, 188, 211);
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-        }
-
-
+            align-items: center;}
         .formulario {
             background-color: white;
             padding: 30px;
             border-radius: 10px;
             width: 350px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
-
-
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);}
         .formulario h1 {
             text-align: center;
-            margin-bottom: 20px;
-        }
-
-
+            margin-bottom: 20px;}
         .formulario label {
             display: block;
             margin-top: 10px;
-            margin-bottom: 5px;
-        }
-
-
+            margin-bottom: 5px;}
         .formulario input {
             width: 100%;
             padding: 10px;
             border: 1px solid #999;
-            border-radius: 5px;
-        }
-
-
+            border-radius: 5px;}
         .formulario button {
             width: 100%;
             padding: 10px;
@@ -68,102 +42,82 @@
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-        }
-
-
+            cursor: pointer;}
         .login {
             margin-top: 20px;
-            text-align: center;
-        }
-
-
+            text-align: center;}
         .login a {
             color: rgb(92, 26, 26);
-            font-weight: bold;
-        }
+            font-weight: bold;}
 
+@media screen and (max-width: 600px) {
+    html,body {
+        width: 100%;
+        min-height: 100%;}
+    body {
+        min-height: 100vh;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;}
+    .formulario {
+        width: 100%;
+        max-width: 400px;
+        padding: 25px 18px;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-sizing: border-box;}
+    .formulario h1 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        text-align: center;}
+    .formulario label {
+        display: block;
+        margin-top: 12px;
+        margin-bottom: 6px;
+        font-size: 1rem;}
+    .formulario input {
+        display: block;
+        width: 100%;
+        min-height: 44px;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        box-sizing: border-box;}
+    .formulario button {
+        display: block;
+        width: 100%;
+        min-height: 44px;
+        padding: 12px;
+        margin-top: 15px;
+        font-size: 1rem;
+        box-sizing: border-box;}
+    .formulario p {
+        margin-top: 15px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        text-align: center;}
+    .formulario a {
+        overflow-wrap: break-word;}
+}
     </style>
-
 </head>
-
-
 <body>
-
-
     <div class="formulario">
-
         <h1>Cadastro</h1>
-
-
         <form id="formCadastro">
-
-
-            <label for="nome">
-                Nome
-            </label>
-
-            <input
-                type="text"
-                id="nome"
-                placeholder="Digite seu nome"
-                required
-            >
-
-
-            <label for="email">
-                E-mail
-            </label>
-
-            <input
-                type="email"
-                id="email"
-                placeholder="Digite seu e-mail"
-                required
-            >
-
-
-            <label for="senha">
-                Senha
-            </label>
-
-            <input
-                type="password"
-                id="senha"
-                placeholder="Digite sua senha"
-                required
-            >
-
-
-            <button type="submit">
-                Cadastrar
-            </button>
-
-
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" placeholder="Digite seu nome" required>
+            <label for="email"> E-mail</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail" required > 
+            <label for="senha"> Senha </label> 
+            <input type="password" id="senha" placeholder="Digite sua senha" required > 
+            <button type="submit"> Cadastrar </button>
         </form>
-
-
-        <p class="login">
-
-            Já possui uma conta?
-
-            <a href="login.html">
-                Fazer login
-            </a>
-
+        <p class="login"> Já possui uma conta? <a href="login.html"> Fazer login </a> 
         </p>
-
-
     </div>
-
-
-    <!-- JavaScript do cadastro -->
-    <script
-        type="module"
-        src="cadastro.js">
-    </script>
-
-
+    <script  type="module" src="cadastro.js"></script>
 </body>
-
 </html>
